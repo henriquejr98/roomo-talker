@@ -1,0 +1,435 @@
+{
+    "codigo": 213,
+    "nome": "Roomo Congonhas",
+    "descricao": "Bem vindo ao Roomo Congonhas. Aqui sua hospedagem será em um condomínio residencial\u00A0padrão. O Roomo Congonhas é um residencial moderno que conta com um elegante hall de entrada e sistema de controle de acesso para garantir a segurança dos residentes. O empreendimento possui piscina, academia e suítes equipadas para uma hospedagem ou moradia confortável, segura e prática. Localizado próximo a importantes avenidas da região, como a Av. Washington Luís e Avenida dos Bandeirantes, além da Marginal Pinheiros e Berrini,  Shopping Vila Olímpia e Aeroporto de Congonhas. Também é possível encontrar diversas opções de restaurantes, padarias e supermercados nas proximidades.",
+    "amenidades": [
+        "Central de Atendimento Digital 24h",
+        "Co-working",
+        "Fitness Center",
+        "Lavanderia Compartilhada Pay Per Use",
+        "Piscina",
+        "Serviço de Limpeza Pay Per Use"
+    ],
+    "imagemLogoEcommerce": "https://letsimage.s3.sa-east-1.amazonaws.com/letsbook/274/logo_letsbook.png",
+    "imagemPrincipal": "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/205e53b060f440a2a23af1ea8eb07b4c.jpg",
+    "galeria": [
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/138cc34716434d87a4201d63024fdc6a.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/13b7c9b9ca134999824074b4255a9de2.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/7a15c4e1d27e4cc69baef13e9d0f2ef3.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/f36a8d76369945a8b27b31e31056696b.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/cdda9fb739ab47a6887c80eba6906333.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/277ddd0b55e84134bd180260805c804b.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/6bb7c67a16a3411282bea64dd7e0c191.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/69bb0d65c1634d59a7e7e5b2482b1cf9.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/823c0ba3879649a28ecaed0c1083cb86.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/6dcb5c2a26804a5abf70f18d69ccfc43.jpg",
+        "https://letsimage.s3.amazonaws.com/letsbook/274/hoteis/257bc1422cc9489aaa04cc5f5a095024.jpg"
+    ],
+    "politicas": [
+        {
+            "titulo": "Equipe de Atendimento",
+            "descricao": "Whats App 11 93094-7323"
+        },
+        {
+            "titulo": "Pagamento Tarifa Não Reembolsável:",
+            "descricao": "Pagamento total das diárias no ato da reserva. Caso haja cancelamento não haverá reembolso das diárias previamente pagas."
+        },
+        {
+            "titulo": "Horário de Check in",
+            "descricao": "A partir das 15 horas.\n1° passo: Para realizar o seu pré check in, entre em contato com nossa equipe de atendimento 24h através do WhatsApp (11)930947323 de forma prévia.\n2° passo: Ao chegar no local nos notifique para receber o número do seu apartamento.\n"
+        },
+        {
+            "titulo": "Prazo para cancelamentos e/ou alteração",
+            "descricao": "Prazo de cancelamento sem ônus pode variar de 48hrs a 30 dias dependendo do período da reserva, consulte a política da sua reserva."
+        },
+        {
+            "titulo": "Pagamento ",
+            "descricao": "As reservas são pré pagas e o cartão de crédito informado no ato da reserva será utilizado para o débito 100% das diárias. Em caso de No Show ou Saída Antecipada não há devolução das diárias não utilizadas; "
+        },
+        {
+            "titulo": "Parcelamento ",
+            "descricao": "Valor mínimo de parcela R$ 300,00 em até 6 vezes o valor total;"
+        },
+        {
+            "titulo": "No Show ou Saida Antecipada",
+            "descricao": "Em caso de No Show ou Saída Antecipada não há devolução das diárias não utilizadas; "
+        },
+        {
+            "titulo": "Visita ",
+            "descricao": "Visitas não são permitidas, caso tenha solicitações extraordinárias, consulte-nos. "
+        },
+        {
+            "titulo": "Horário de Check out",
+            "descricao": "Até as 12h00 horas.\nPara realizar o seu Check out, basta informar no WhatsApp (11)930947323 sobre sua saída e entregar sua chave de acesso na portaria caso tenha.\n"
+        },
+        {
+            "titulo": "Estacionamento ",
+            "descricao": "Alguns residenciais cobram estacionamento, caso sua viagem seja de carro, nos consulte;"
+        },
+        {
+            "titulo": "Refeição ",
+            "descricao": "Alguns residenciais possuem café da manhã. Caso tenha dúvidas, nos consulte;"
+        },
+        {
+            "titulo": "Limpeza ",
+            "descricao": "Caso queira contratar serviço de arrumação e/ou limpeza durante a sua estadia, o mesmo poderá ser contratado com a Equipe de Atendimento da unidade através do Whats App 11 93094-7323. "
+        },
+        {
+            "titulo": "Política de Early check in",
+            "descricao": "Cobra-se uma diária para o early check-in antes das 6h e meia diária após às 6h, mediante disponibilidade no momento da chegada;"
+        },
+        {
+            "titulo": "Política de Menores ",
+            "descricao": "Aceitamos menores de 18 anos mediante apresentação prévia de documentação dos pais ou responsáveis legais;"
+        },
+        {
+            "titulo": "Política de Late check out",
+            "descricao": "Cobra-se meia diária para o late check-out até às 16hs e uma diária após às 16h, mediante disponibilidade na unidade no dia;"
+        },
+        {
+            "titulo": "Pet",
+            "descricao": "Permitido apenas para reservas particulares fechadas diretamente com a Central de Reservas, seguindo as seguintes regras: \n- Somente para reservas Long Stay (mínimo 30 dias); \n- Com a contratação antecipada do serviço de limpeza a cada 15 primeiros dias de permanência, não fornecemos KIT PET.\n- Diária PET de R$70,00 +5% \n- Necessário apresentação de carteirinha de vacinação do pet atualizada \n- Apenas Pets de pequeno porte\n"
+        }
+    ],
+    "latitude": "-23.6108",
+    "longitude": "-46.6757",
+    "cep": "04601-090",
+    "endereco": "Rua Stela Marina, 200",
+    "complemento": null,
+    "bairro": "Campo Belo",
+    "codigoCidade": "SPO",
+    "cidade": "São Paulo - SAO",
+    "codigoEstado": "SP",
+    "estado": "São Paulo",
+    "pais": "Brasil",
+    "telefone": "+55 (11) 40034658",
+    "celular": null,
+    "whatsApp": false,
+    "email": "no-reply@reserveatlantica.com.br",
+    "horarioCheckin": "15:00",
+    "horarioCheckout": "12:00",
+    "codigoTripAdvisor": null,
+    "moeda": "BRL",
+    "tipo": 0,
+    "categoria": 0,
+    "quartos": [
+        {
+            "codigo": 1142,
+            "nome": "Studio Casal Não Fumante",
+            "descricao": "Este Studio oferece um espaço moderno, funcional e aconchegante. Possui 1 cama de casal, é totalmente mobiliado e equipado com geladeira, utensílios de cozinha, micro-ondas, Smart TV, secador de cabelo e mesa de trabalho. Ideal para pessoas em busca de praticidade e conforto em um ambiente elegante.",
+            "imagemPrincipal": "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/a8dd4df859394818aa9e11069b49c93e.jpg",
+            "galeria": [
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/33c37d361b86488a9af06a8fa392b8ff.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/b958e48fe5144697a3e3dc8f4703dd1e.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/42729efab8e74c3f836d1275bbf6b3ed.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/e08a5cd0a1a34592af600305ff18a2a7.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/68334d4a4eef407984545c0ea53cbefd.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/8cae175813d24f0790732ae832a86d4c.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/2b9dba01a38b4c24b99842b4aef4f58f.jpg",
+                "https://letsimage.s3.amazonaws.com/letsbook/274/quartos/143869eac8d34d06b3e2a2ada053aeb9.jpg"
+            ],
+            "amenidades": [
+                "Ar-Condicionado",
+                "Cafeteira",
+                "Cozinha",
+                "Cozinha (pia, frigobar, micro-ondas e utensílios)",
+                "Kit Amenities",
+                "Mesa de trabalho",
+                "Secador de cabelo",
+                "Smart TV",
+                "Wi-Fi"
+            ],
+            "minimoAdultos": 1,
+            "maximoAdultos": 2,
+            "maximoCriancas": 1,
+            "maximoOcupantes": 3,
+            "unidadesDisponiveis": 6,
+            "compativelOcupantesBusca": false,
+            "tarifas": [
+                {
+                    "codigo": 43463,
+                    "nome": "Oferta Final de Ano",
+                    "politica": null,
+                    "pensao": "Inclui Internet WiFi. Prazo de cancelamento em até 48 horas de antecedência a data de chegada, após esse prazo o valor total pré pago será retido e não haverá possibilidade de crédito. Para reservas na política não reembolsável, não haverá reembolso das diárias mesmo que solicitado o cancelamento e/ou alteração com até 48 horas; A sua reserva é em um residencial comum, por isso, é essencial a realização do seu pré check-in com no mínimo 48hrs de antecedência da data do seu check-in, entre em contato com nossa equipe de atendimento 24h através do WhatsApp (11) 930947323.",
+                    "prioritaria": false,
+                    "crm": false,
+                    "promocode": null,
+                    "formasPagamentoExclusivoTarifa": false,
+                    "exclusivoBoleto": false,
+                    "exclusivoPix": false,
+                    "valorTotal": 2876,
+                    "valorTotalComDesconto": 2444.50,
+                    "valorDesconto": 431.50,
+                    "valorTaxas": 0,
+                    "valorTaxasDiaria": 0,
+                    "valorMedioDiaria": 359.5,
+                    "valorMedioDiariaComDesconto": 305.5,
+                    "percentualDesconto": 15,
+                    "unidadesDisponiveis": 6,
+                    "meiosPagamento": [
+                        {
+                            "tipoPagamento": "Prepago",
+                            "tipoCobranca": "Integral",
+                            "percentualPagamentoParcial": null,
+                            "politicaReembolso": "NaoReembolsavel",
+                            "prazoCancelamentoGratuito": null,
+                            "dataLimiteCancelamentoGratuito": null
+                        }
+                    ],
+                    "formasPagamento": [
+                        {
+                            "descricao": "American Express",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 407.42,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Diners Club",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 407.42,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Elo",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 407.42,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Hipercard",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 407.42,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Mastercard",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 407.42,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Visa",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 407.42,
+                            "percentualDesconto": 0.00
+                        }
+                    ],
+                    "diarias": [
+                        {
+                            "data": "2023-11-03T00:00:00",
+                            "valor": 361
+                        },
+                        {
+                            "data": "2023-11-04T00:00:00",
+                            "valor": 361
+                        },
+                        {
+                            "data": "2023-11-05T00:00:00",
+                            "valor": 338
+                        },
+                        {
+                            "data": "2023-11-06T00:00:00",
+                            "valor": 246.50
+                        },
+                        {
+                            "data": "2023-11-07T00:00:00",
+                            "valor": 246.50
+                        },
+                        {
+                            "data": "2023-11-08T00:00:00",
+                            "valor": 246.50
+                        },
+                        {
+                            "data": "2023-11-09T00:00:00",
+                            "valor": 284
+                        },
+                        {
+                            "data": "2023-11-10T00:00:00",
+                            "valor": 361
+                        }
+                    ],
+                    "taxas": []
+                },
+                {
+                    "codigo": 34166,
+                    "nome": "Flexível",
+                    "politica": null,
+                    "pensao": null,
+                    "prioritaria": false,
+                    "crm": false,
+                    "promocode": null,
+                    "formasPagamentoExclusivoTarifa": false,
+                    "exclusivoBoleto": false,
+                    "exclusivoPix": false,
+                    "valorTotal": 2877,
+                    "valorTotalComDesconto": 2877,
+                    "valorDesconto": 0,
+                    "valorTaxas": 0,
+                    "valorTaxasDiaria": 0,
+                    "valorMedioDiaria": 359.5,
+                    "valorMedioDiariaComDesconto": 359.5,
+                    "percentualDesconto": 0,
+                    "unidadesDisponiveis": 6,
+                    "meiosPagamento": [
+                        {
+                            "tipoPagamento": "Prepago",
+                            "tipoCobranca": "Integral",
+                            "percentualPagamentoParcial": null,
+                            "politicaReembolso": "NaoReembolsavel",
+                            "prazoCancelamentoGratuito": null,
+                            "dataLimiteCancelamentoGratuito": null
+                        }
+                    ],
+                    "formasPagamento": [
+                        {
+                            "descricao": "American Express",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 479.5,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Diners Club",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 479.5,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Elo",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 479.5,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Hipercard",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 479.5,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Mastercard",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 479.5,
+                            "percentualDesconto": 0.00
+                        },
+                        {
+                            "descricao": "Visa",
+                            "tipo": "Cartao",
+                            "maximoParcelas": 6,
+                            "valorMinimoParcela": 300,
+                            "valorParcela": 479.5,
+                            "percentualDesconto": 0.00
+                        }
+                    ],
+                    "diarias": [
+                        {
+                            "data": "2023-11-03T00:00:00",
+                            "valor": 425
+                        },
+                        {
+                            "data": "2023-11-04T00:00:00",
+                            "valor": 425
+                        },
+                        {
+                            "data": "2023-11-05T00:00:00",
+                            "valor": 398
+                        },
+                        {
+                            "data": "2023-11-06T00:00:00",
+                            "valor": 290
+                        },
+                        {
+                            "data": "2023-11-07T00:00:00",
+                            "valor": 290
+                        },
+                        {
+                            "data": "2023-11-08T00:00:00",
+                            "valor": 290
+                        },
+                        {
+                            "data": "2023-11-09T00:00:00",
+                            "valor": 334
+                        },
+                        {
+                            "data": "2023-11-10T00:00:00",
+                            "valor": 425
+                        }
+                    ],
+                    "taxas": []
+                }
+            ]
+        }
+    ],
+    "formasPagamento": [
+        {
+            "descricao": "American Express",
+            "tipo": "Cartao",
+            "maximoParcelas": 6,
+            "valorMinimoParcela": 300,
+            "valorParcela": null,
+            "percentualDesconto": 0.00
+        },
+        {
+            "descricao": "Diners Club",
+            "tipo": "Cartao",
+            "maximoParcelas": 6,
+            "valorMinimoParcela": 300,
+            "valorParcela": null,
+            "percentualDesconto": 0.00
+        },
+        {
+            "descricao": "Elo",
+            "tipo": "Cartao",
+            "maximoParcelas": 6,
+            "valorMinimoParcela": 300,
+            "valorParcela": null,
+            "percentualDesconto": 0.00
+        },
+        {
+            "descricao": "Hipercard",
+            "tipo": "Cartao",
+            "maximoParcelas": 6,
+            "valorMinimoParcela": 300,
+            "valorParcela": null,
+            "percentualDesconto": 0.00
+        },
+        {
+            "descricao": "Mastercard",
+            "tipo": "Cartao",
+            "maximoParcelas": 6,
+            "valorMinimoParcela": 300,
+            "valorParcela": null,
+            "percentualDesconto": 0.00
+        },
+        {
+            "descricao": "Visa",
+            "tipo": "Cartao",
+            "maximoParcelas": 6,
+            "valorMinimoParcela": 300,
+            "valorParcela": null,
+            "percentualDesconto": 0.00
+        }
+    ],
+    "warnings": []
+}
