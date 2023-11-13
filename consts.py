@@ -31,7 +31,7 @@ PROMPT1= """
         Step 9 - Make an JSON format final answer with all the information of the steps above with the keys name, city, check-in, check-out, adults, children.
 
         Conclusion:
-        Always finalize the conversation with the JSON answer format. The check-in and check-out must be on the format yyyy-mm-dd.
+        Always return a valid JSON answer. The check-in and check-out must be on the format yyyy-mm-dd.
 """
 
 PROMPT2 ="""
