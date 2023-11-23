@@ -30,19 +30,9 @@ class RoomoHotels:
         }
         self.url = 'https://gateway.letsbook.com.br/destinos'
 
-    # async def get_hotels(self):
-    #     async with aiohttp.ClientSession() as session:
-    #         async with session.get(self.url) as response:
-    #             if response.status == 200:
-    #                 hotels = await response.json()
-    #                 return hotels
-    #             else:
-    #                 raise Exception(f"Bad request: {response.status}")
-
-
     def get_hotels(self):
         response = requests.get(url=self.url, headers=self.headers)
-        hotels = response.json()
+        hotels = response.json() # pip install brotli
         return hotels
 
     def get_cities(self):
@@ -51,16 +41,9 @@ class RoomoHotels:
         unique_cities = list(set(city_codes.keys()))
         return unique_cities, city_codes
 
-# async def main():
-#     roomo_hotels = RoomoHotels()
-#     unique_cities, city_codes = await roomo_hotels.get_cities()
-#     print(unique_cities)
-#     print(city_codes)
-
-
 
 if __name__ == "__main__":
     roomo_hotels = RoomoHotels()
-    cities = roomo_hotels.get_cities()
-    print(cities)
-    # asyncio.run(main())
+    cities, codes = roomo_hotels.get_cities()
+    # print(cities)
+    print(codes)

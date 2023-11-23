@@ -31,14 +31,19 @@ class RommoOffers:
         }
         self.available = {}
 
-    async def make_request(self):
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url=f'{self.base_url}{self.path_url}', headers=self.headers) as response:
-                if response.status == 200:
-                    data = await response.json()
-                    return data
-                else:
-                    raise Exception(f"Erro na requisição: {response.status}")
+    # async def make_request(self):
+    #     async with aiohttp.ClientSession() as session:
+    #         async with session.get(url=f'{self.base_url}{self.path_url}', headers=self.headers) as response:
+    #             if response.status == 200:
+    #                 data = await response.json()
+    #                 return data
+    #             else:
+    #                 raise Exception(f"Erro na requisição: {response.status}\n Possível causa: Data de check_in/check_out inválida.")
+
+    def make_request(self):
+        r = requests.get(url=f'{self.base_url}{self.path_url}', headers=self.headers)
+        data = r.json()
+        return data
 
     def parse_hotels(self, hotels):
         for hotel in hotels['hoteis']:
@@ -52,10 +57,14 @@ class RommoOffers:
                     }
         return {hotel: f"R$ {info['lowest_price']}" for hotel, info in self.available.items()}
 
-    async def process_data(self):
-        hotels = await self.make_request()
+    def process_data(self):
+        hotels = self.make_request()
         result = self.parse_hotels(hotels)
         return result
+    # async def process_data(self):
+    #     hotels = await self.make_request()
+    #     result = self.parse_hotels(hotels)
+    #     return result
 
 async def main(info):
     roomo_hotels = RommoOffers(info)
@@ -65,12 +74,16 @@ async def main(info):
 if __name__ == '__main__':
 
     info = {
-    'check_in': '2023-11-09',
-    'check_out': '2023-12-11',
-    'adults': '1',
-    'children_age': '3,5',
-    'city_code': 'SPO'
+    'check_in': '2023-12-20',
+    'check_out': '2024-01-04',
+    'adults': '2',
+    'children_age': '3,6',
+    'city_code': 'RIO'
     }
 
-    test = asyncio.run(main(info))
-    print(test)
+    roomo_hotels = RommoOffers(info)
+    data = roomo_hotels.process_data()
+    print(data)
+
+    # test = asyncio.run(main(info))
+    # print(test)
