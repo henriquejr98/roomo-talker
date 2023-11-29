@@ -89,6 +89,8 @@ ASSISTANT_PROMPT = """
                 ask about how many adults will be traveling considering the user.
 
         Step 8 - With all this information, call the get_hotels_info function. 
+        
+        Step 9 - if the user wants more information about a particular hotel, call the function get_hotel_info.
 
 """
 

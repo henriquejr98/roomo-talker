@@ -18,12 +18,15 @@ def modify_assistant(assistant_id):
     tools=[{
     "type": "function",
     "function": {
-        "name": "get_current_time_and_date",
-        "description": "Get the current time and date to validate if the check-in and check-out is a after date.",
+        "name": "validate_dates",
+        "description": "Use this function to validate check-in and check-out dates.",
         "parameters": {
         "type": "object",
-        "properties": {},
-        "required": []
+        "properties": {
+          "check_in": {"type": "string", "description": "The user's check-in date in the format DD/MM/YYYY."},
+          "check_out": {"type": "string", "description": "The user's check-out date in the format DD/MM/YYYY."},
+        },
+        "required": ["check_in", "check_out"]
         },
         "response": {
         "type": "object",
@@ -41,16 +44,58 @@ def modify_assistant(assistant_id):
       "parameters": {
         "type": "object",
         "properties": {
-          "check_in": {"type": "string", "description": "The date of check-in user."},
-          "check_out": {"type": "string", "description": "The date of check-out user."},
           "adults": {"type": "string", "description": "The quantity of adults who will travel considering the user."},
-          "children_ages": {"type": "string", "description": "The ages of all the children who will travel."},
+          "children_ages": {"type": "string", "description": "The ages of all the children who will travel. For example: three children aged 2, 4 and 7, the porperty will be '2,4,7'"},
           "city": {"type": "string", "description": "the name of the city the user wants to travel to."},
+          "email": {"type": "string", "description": "the e-mail of the user."},
         },
-        "required": ["check_in", "check_out", "adults", "children_ages", "city"]
+        "required": ["adults", "children_ages", "city", "email"]
       }
     } 
-    }]
+    },
+    {
+    "type": "function",
+    "function": {
+      "name": "get_hotel_info",
+      "description": "Get a complete description about a especific hotel.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "hotel_name": {"type": "string", "description": "The name of the hotel that the user wants to know more information about."},
+        },
+        "required": ["hotel_name"]
+      }
+    } 
+    },
+    {
+    "type": "function",
+    "function": {
+      "name": "get_rooms_info",
+      "description": "Get a general overview about the rooms in a especific hotel.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "hotel_name": {"type": "string", "description": "The name of the hotel that the user wants to know more rooms information about."},
+        },
+        "required": ["hotel_name"]
+      }
+    } 
+    },
+    {
+    "type": "function",
+    "function": {
+      "name": "get_room_info",
+      "description": "Get a complete description and a photograph about a especific room.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "room_name": {"type": "string", "description": "The name of the room that the user wants to know more information about."},
+        },
+        "required": ["room_name"]
+      }
+    } 
+    },
+    ]
     # model="",
     # file_ids=["file-abc123", "file-abc456"],
     )

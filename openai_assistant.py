@@ -1,12 +1,19 @@
 import os
+import json
 from openai import OpenAI
 from dotenv import load_dotenv
 from datetime import datetime
+from flask import jsonify, request, stream_with_context, Response
 from hotels_offers import RommoOffers
 import consts
+import threading
 
 load_dotenv()
 api_key = os.environ.get("OPENAI_API_KEY")
+
+users = {}
+lock_geral = threading.Lock()
+lock_by_number = {}
 
 
 class RoomoAssistant:
@@ -14,6 +21,11 @@ class RoomoAssistant:
         self.client = OpenAI(api_key=api_key)
         self.assistant_id = assistant_id
         self.create_thread()
+        self.user_phone = None
+        self.offers = None
+        self.room_offers = {}
+        self.book = {}
+
 
     def create_thread(self):
         empty_thread = self.client.beta.threads.create()
@@ -52,8 +64,9 @@ class RoomoAssistant:
             )
             # print(run.status)
             if run.status == "requires_action":
-                my_args = eval(run.required_action.submit_tool_outputs.tool_calls[0].function.arguments)
+                my_args = json.loads(run.required_action.submit_tool_outputs.tool_calls[0].function.arguments)
                 called_function = run.required_action.submit_tool_outputs.tool_calls[0].function.name
+                print(called_function)
                 tool_call_id = run.required_action.submit_tool_outputs.tool_calls[0].id
 
                 run = self.client.beta.threads.runs.submit_tool_outputs(
@@ -69,34 +82,145 @@ class RoomoAssistant:
         messages = self.list_messages()
         return messages[0]
 
-    def get_current_time_and_date(self):
+    def validate_dates(self, check_in, check_out):
         now = datetime.now()
-        formatted_now = now.strftime("%d-%m-%Y %H:%M:%S")   
+        if len(check_in) == 5 or len(check_out) == 5:
+            input_check_in = datetime.strptime(check_in, "%d/%m")
+            input_check_out = datetime.strptime(check_out, "%d/%m")
+            if input_check_in.month < now.month or (input_check_in.month == now.month and input_check_in.day < now.day):
+                year = now.year + 1
+            else:
+                year = now.year
+            formated_check_in = input_check_in.replace(year=year)
 
-        return formatted_now
+            if input_check_out.month < now.month or (input_check_out.month == now.month and input_check_out.day < now.day):
+                year = now.year + 1
+            else:
+                year = now.year
+            formated_check_out = input_check_out.replace(year=year)
+        else:
+            formated_check_in = datetime.strptime(check_in, "%d/%m/%Y")
+            formated_check_out = datetime.strptime(check_out, "%d/%m/%Y")
+
+        formated_now = now.strftime("%d-%m-%Y")
+        if formated_check_in > now:
+            if formated_check_out > now:
+                if formated_check_out > formated_check_in:
+                    self.book['check_in'] = formated_check_in.strftime("%Y-%m-%d")
+                    self.book['check_out'] = formated_check_out.strftime("%Y-%m-%d")
+                    self.book['num_nights'] = (formated_check_out - formated_check_in).days
+                    return f'As datas de check-in e check-out são válidas. Serão {self.book["num_nights"]} diárias.'
+                else:
+                    return 'A data de check-out não pode ser menor que a data do check-in.'
+            else:
+                return f'A data de check-out não pode ser menor que a do dia de hoje ({formated_now})'
+        else:
+                return f'A data de check-in não pode ser menor que a do dia de hoje ({formated_now})'
+
     
-    def get_hotels_info(self, check_in, check_out, adults, children_ages, city):
-        info = {
-        'check_in': check_in,
-        'check_out': check_out,
-        'adults': adults,
-        'children_age': children_ages,
-        'city_code': consts.CITY_CODES[city]
-        }
-        offers = RommoOffers(info)
-        data = offers.process_data()
-        if data:
-            return str(data)
-        return 'Não foram encontrados hotéis para essa data e local.'
+    def get_hotels_info(self, adults, children_ages, city, email):
+        self.book['adults'] = adults
+        self.book['children_ages'] = children_ages
+        self.book['city'] = [consts.CITY_CODES[city], city]
+        self.book['email'] = email
 
+        info = {
+            'check_in': self.book['check_in'],
+            'check_out': self.book['check_out'],
+            'adults': adults,
+            'children_age': children_ages,
+            'city_code': consts.CITY_CODES[city]
+            }
+        self.offers = RommoOffers(info)
+        try:
+            self.offers.process_data()
+            data = self.offers.lower_prices
+            return str(data) if data else 'Não foram encontrados hotéis para essa data e local.'
+        except KeyError:
+            'Erro no servidor interno de consultas.'
+
+    def get_hotel_info(self, hotel_name):
+        self.book['hotel_name'] = hotel_name
+        return self.offers.hotels[hotel_name]
+    
+    def get_rooms_info(self, hotel_name):
+        rooms = self.offers.complete[hotel_name]['quartos']
+        for room in rooms:
+            self.room_offers[room['nome']] = {
+                'min_price': min([fee['valorTotalComDesconto'] for fee in room['tarifas']]),
+                'description': room['descricao'],
+                'image': room['imagemPrincipal'],
+            }
+
+        formated = {k: f'R$ {v["min_price"]}.00' for k, v in self.room_offers.items()}
+
+        return f'Nomes e valores dos quartos com desconto considerando as {self.book["num_nights"]} diárias.' + str(formated) 
         
+    def get_room_info(self, room_name):
+        self.book['room_name'] = room_name
+        room_detail = {
+            'Descrição' :self.room_offers[room_name]['description'],
+            'Foto principal': self.room_offers[room_name]['image']
+        }
+
+        return str(room_detail)
+
+def get_assistant(user_phone):
+    with lock_geral:
+        if user_phone not in users.keys():
+            chain = RoomoAssistant('asst_qayuVh8i6bSMF0lYy1UxkBG6')
+            users[user_phone] = chain
+            print("New chain created.")
+        else:
+            chain = users[user_phone]
+        return chain
+
+def get_lock(user_phone: str):
+    with lock_geral:
+        if user_phone in lock_by_number:
+            return lock_by_number[user_phone]
+        else:
+            lock_by_number[user_phone] = threading.Lock()
+            return lock_by_number[user_phone]
+
+    
+
+    
+def ask():
+    data = request.get_json()
+    user_phone = data.get('user_phone')
+    user_input = data.get('user_input')
+
+    if not user_phone:
+        return jsonify({"error": "User number phone is required"}), 400
+
+    if not user_input:
+        return jsonify({"error": "User input is required"}), 400
+
+    chain = get_assistant(user_phone)
+
+    lock = get_lock(user_phone)
+
+    with lock:
+        answer = chain.talk(user_input)
+        response = {
+            "answer": answer
+        }
+
+        data = json.dumps(response)
+        return Response(stream_with_context(data), content_type='application/json')
+    
 
 if __name__ == "__main__":
     # roomo = RoomoAssistant('asst_dt5eWgjY8vQqz1Oo6skWvk3D')
     roomo = RoomoAssistant('asst_qayuVh8i6bSMF0lYy1UxkBG6')
     while True:
-        msg = input('>> ')
-        print(roomo.talk(msg))
-        print()
+        try:
+            msg = input('>> ')
+            print(roomo.talk(msg))
+            print()
+        except KeyboardInterrupt or KeyError:
+            print(roomo.book)
+            break
 
 
