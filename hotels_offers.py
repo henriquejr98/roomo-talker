@@ -13,7 +13,7 @@ class RommoOffers:
             'Accept-Encoding': 'gzip, deflate, br',
             'Accept-Language': 'pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7',
             'Cache-Control': 'no-cache',
-            'Guidcarrinho': '104fb02e4eed4cfebb1a0bd40db102ce638344525891198711', # Atenção
+            'Guidcarrinho': '104fb02e4eed4cfebb1a0bd40db102ce638344525891198711', 
             'Origem': 'Motor',
             'Origin': 'https://atlantica.letsbook.com.br',
             'Pragma': 'no-cache',
@@ -25,7 +25,7 @@ class RommoOffers:
             'Sec-Fetch-Mode': 'cors',
             'Sec-Fetch-Site': 'same-site',
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
-            'X-Api-Key': 'vMq2UPze2jUBm4ZYcp4zrzXmsdgnpxQ4YFRrFhoLCDtjw7uxhA9Gf3oXFaUd', # Atenção
+            'X-Api-Key': 'vMq2UPze2jUBm4ZYcp4zrzXmsdgnpxQ4YFRrFhoLCDtjw7uxhA9Gf3oXFaUd', 
         }
         self.available = {}
         self.hotels = {}
@@ -33,8 +33,10 @@ class RommoOffers:
         self.complete = {}
 
     def make_request(self):
-        r = requests.get(url=f'{self.base_url}{self.path_url}', headers=self.headers)
+        url = f'{self.base_url}{self.path_url}'
+        r = requests.get(url=url, headers=self.headers)
         data = r.json()
+
         return data
 
     def get_available_hotels(self, hotels):
@@ -84,17 +86,18 @@ if __name__ == '__main__':
     # print(roomo_hotels.available)
     # print()
     # print(roomo_hotels.lower_prices)
+    print(data)
 
-    tarifas = roomo_hotels.complete['Ramada Encore Minascasa Belo Horizonte']['quartos'][0]['tarifas']
-    quartos = roomo_hotels.complete['Ramada Encore Minascasa Belo Horizonte']['quartos']
-    ofertas = {}
-    for quarto in quartos:
-        ofertas[quarto['nome']] = min([tarifa['valorTotal'] for tarifa in quarto['tarifas']])
+    # tarifas = roomo_hotels.complete['Ramada Encore Minascasa Belo Horizonte']['quartos'][0]['tarifas']
+    # quartos = roomo_hotels.complete['Ramada Encore Minascasa Belo Horizonte']['quartos']
+    # ofertas = {}
+    # for quarto in quartos:
+    #     ofertas[quarto['nome']] = min([tarifa['valorTotal'] for tarifa in quarto['tarifas']])
 
 
-    room_offers = {}
-    rooms = roomo_hotels.complete['Hilton Garden Inn Belo Horizonte Lourdes']['quartos']
-    print(rooms[0]['imagemPrincipal'])
+    # room_offers = {}
+    # rooms = roomo_hotels.complete['Hilton Garden Inn Belo Horizonte Lourdes']['quartos']
+    # print(rooms[0]['imagemPrincipal'])
     # for room in rooms:
     #     room_offers[room['nome']] = min([fee['valorTotalComDesconto'] for fee in room['tarifas']])
     # formated = {f'Quarto {k}': f'Valor total com desconto R$ {v}' for k, v in room_offers.items()}

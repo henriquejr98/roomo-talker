@@ -95,6 +95,30 @@ def modify_assistant(assistant_id):
       }
     } 
     },
+    {
+    "type": "function",
+    "function": {
+      "name": "get_current_date",
+      "description": "Use this function when you need to get the current date.",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    } 
+    },
+    {
+    "type": "function",
+    "function": {
+      "name": "summarize_booking",
+      "description": "Use this function to summarize and confirm the reservation before end the conversation.",
+      "parameters": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      }
+    } 
+    },
     ]
     # model="",
     # file_ids=["file-abc123", "file-abc456"],

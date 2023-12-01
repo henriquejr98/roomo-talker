@@ -26,7 +26,6 @@ class RoomoAssistant:
         self.room_offers = {}
         self.book = {}
 
-
     def create_thread(self):
         empty_thread = self.client.beta.threads.create()
         self.thread_id = empty_thread.id
@@ -54,7 +53,7 @@ class RoomoAssistant:
         run = self.client.beta.threads.runs.create(
                 thread_id=self.thread_id,
                 assistant_id=self.assistant_id,
-                model="gpt-3.5-turbo-1106", # Sobrescreve gpt-4 da assistant,
+                # model="gpt-3.5-turbo-1106", # Sobrescreve gpt-4 da assistant,
                 # instructions = "" # Sobrescreve ao prompt da assistant
         )
         while run.status != "completed":
@@ -66,7 +65,7 @@ class RoomoAssistant:
             if run.status == "requires_action":
                 my_args = json.loads(run.required_action.submit_tool_outputs.tool_calls[0].function.arguments)
                 called_function = run.required_action.submit_tool_outputs.tool_calls[0].function.name
-                print(called_function)
+                # print(called_function)
                 tool_call_id = run.required_action.submit_tool_outputs.tool_calls[0].id
 
                 run = self.client.beta.threads.runs.submit_tool_outputs(
@@ -117,6 +116,10 @@ class RoomoAssistant:
         else:
                 return f'A data de check-in não pode ser menor que a do dia de hoje ({formated_now})'
 
+    def get_current_date(self):
+        now = datetime.now()
+        formated_now = now.strftime("%d/%m/%Y")
+        return formated_now
     
     def get_hotels_info(self, adults, children_ages, city, email):
         self.book['adults'] = adults
@@ -164,6 +167,20 @@ class RoomoAssistant:
         }
 
         return str(room_detail)
+    
+    def summarize_booking(self):
+        formated = {
+            'E-mail': self.book['email'],
+            'Cidade': self.book['city'][1],
+            'Nome do hotel': self.book['hotel_name'],
+            'Nome do quarto': self.book['room_name'],
+            'Data do check-in': self.book['check_in'],
+            'Data do check-out': self.book['check_out'],
+            'Quantidade de diárias': self.book['num_nights'],
+            'Quantidade de adultos': self.book['adults'],
+        }
+        return str(formated)
+
 
 def get_assistant(user_phone):
     with lock_geral:
@@ -183,9 +200,6 @@ def get_lock(user_phone: str):
             lock_by_number[user_phone] = threading.Lock()
             return lock_by_number[user_phone]
 
-    
-
-    
 def ask():
     data = request.get_json()
     user_phone = data.get('user_phone')
