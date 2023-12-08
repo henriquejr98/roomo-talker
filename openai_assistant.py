@@ -53,8 +53,7 @@ class RoomoAssistant:
         run = self.client.beta.threads.runs.create(
                 thread_id=self.thread_id,
                 assistant_id=self.assistant_id,
-                # model="gpt-3.5-turbo-1106", # Sobrescreve gpt-4 da assistant,
-                # instructions = "" # Sobrescreve ao prompt da assistant
+                model="gpt-3.5-turbo-1106", # Sobrescreve gpt-4 da assistant,
         )
         while run.status != "completed":
             run = self.client.beta.threads.runs.retrieve(
@@ -121,11 +120,10 @@ class RoomoAssistant:
         formated_now = now.strftime("%d/%m/%Y")
         return formated_now
     
-    def get_hotels_info(self, adults, children_ages, city, email):
+    def get_hotels_info(self, adults, children_ages, city):
         self.book['adults'] = adults
         self.book['children_ages'] = children_ages
         self.book['city'] = [consts.CITY_CODES[city], city]
-        self.book['email'] = email
 
         info = {
             'check_in': self.book['check_in'],
@@ -168,7 +166,9 @@ class RoomoAssistant:
 
         return str(room_detail)
     
-    def summarize_booking(self):
+    def summarize_booking(self, email):
+        self.book['email'] = email
+
         formated = {
             'E-mail': self.book['email'],
             'Cidade': self.book['city'][1],
